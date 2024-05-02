@@ -23,28 +23,30 @@ export type Telefone = {
 };
 
 export type Pessoa = {
-  cpf: string;
-  data_nascimento: string;
-  first_name: string;
+  cpf?: string;
+  data_nascimento?: string;
+  first_name?: string;
   firsts_name?: string;
-  full_name: string;
+  full_name?: string;
   vinculo?: string;
-  procon: string;
-  sexo: string;
-  surname: string;
-  titulo_de_eleitor: string;
+  procon?: string;
+  sexo?: string;
+  surname?: string;
+  titulo_de_eleitor?: string;
   bookmark?: string;
   cidade_nascimento?: string;
   ctps?: string;
   profissao?: string;
   escolaridade?: string;
-  estado_nascimento: string;
-  idade: string;
-  pais_nascimento: string;
-  pis_pasep: string;
-  status_receita: string;
-  nacionalidade: string;
-  identidade: string;
+  estado_nascimento?: string;
+  idade?: string;
+  pais_nascimento?: string;
+  pis_pasep?: string;
+  status_receita?: string;
+  nacionalidade?: string;
+  identidade?: string;
+  telefone: Array<Telefone>;
+  endereco: Array<Endereco>;
 };
 
 export type Empresa = {

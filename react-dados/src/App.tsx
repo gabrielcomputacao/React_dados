@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-
+import loaderGif from "@/assets/loader.gif";
 import "./global.css";
-import { Empresa, Endereco, Snap, Telefone } from "./models/models";
+import { Empresa, Endereco, Pessoa, Snap, Telefone } from "./models/models";
 
 function App() {
   const [mainEntity, setMainEntity] = useState<Array<Snap>>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getApiResult() {
@@ -19,7 +20,7 @@ function App() {
           telefone: [],
         } as Snap;
 
-        SNAP.map((dataSnap) => {
+        await SNAP.map((dataSnap) => {
           dataSnap.email.map((element) => {
             const email_address = element["email address"];
             createNewObjectMain.email.push({ email_address });
@@ -73,6 +74,124 @@ function App() {
 
             createNewObjectMain.empresa.push(objectEmpresa);
           });
+
+          dataSnap.endereco.map((element) => {
+            const objectEnderecoMainEntity = {} as Endereco;
+
+            objectEnderecoMainEntity.area = element.area;
+            objectEnderecoMainEntity.area_code = element["area code"];
+            objectEnderecoMainEntity.bairro = element.bairro;
+            objectEnderecoMainEntity.city = element.city;
+            objectEnderecoMainEntity.complemento = element.complemento;
+            objectEnderecoMainEntity.logradouro = element.logradouro;
+            objectEnderecoMainEntity.nome = element.nome;
+            objectEnderecoMainEntity.logradouro = element.logradouro;
+            objectEnderecoMainEntity.telefone_relacionado =
+              element["telefone relacionado"];
+
+            createNewObjectMain.endereco.push(objectEnderecoMainEntity);
+          });
+          dataSnap.telefone.map((element) => {
+            const objectTelefoneMainEntity = {} as Telefone;
+
+            objectTelefoneMainEntity.operadora = element.operadora ?? "";
+            objectTelefoneMainEntity.whatsapp = element.whatsapp ?? "";
+            objectTelefoneMainEntity.phone_number =
+              element["phone number"] ?? "";
+
+            createNewObjectMain.telefone.push(objectTelefoneMainEntity);
+          });
+
+          dataSnap.pessoa.map((element) => {
+            const createNewPessoa = {
+              endereco: [] as Endereco[],
+              telefone: [] as Telefone[],
+            } as Pessoa;
+
+            createNewPessoa.bookmark = element.bookmark;
+            createNewPessoa.cpf = element.cpf;
+            createNewPessoa.data_nascimento = element["data nascimento"];
+            createNewPessoa.cidade_nascimento = element.cidade_nascimento;
+            createNewPessoa.ctps = element.ctps;
+            createNewPessoa.escolaridade = element.escolaridade;
+            createNewPessoa.estado_nascimento = element.estado_nascimento;
+            createNewPessoa.first_name = element["first names"];
+            createNewPessoa.full_name = element["full name"];
+            createNewPessoa.idade = element.idade;
+            createNewPessoa.identidade = element.identidade;
+            createNewPessoa.nacionalidade = element.nacionalidade;
+            createNewPessoa.pais_nascimento = element.pais_nascimento;
+            createNewPessoa.pis_pasep = element["pis/pasep"];
+            createNewPessoa.procon = element.procon;
+            createNewPessoa.profissao = element.profissao;
+            createNewPessoa.sexo = element.sexo;
+            createNewPessoa.status_receita = element["status receita"];
+            createNewPessoa.surname = element.surname;
+            createNewPessoa.titulo_de_eleitor = element["titulo de eleitor"];
+            createNewPessoa.vinculo = element.vinculo;
+
+            element.telefone?.map((telefoneValuePessoa) => {
+              const objectTelefonePessoa = {} as Telefone;
+
+              objectTelefonePessoa.operadora =
+                telefoneValuePessoa["phone number"];
+
+              if ("whatsapp" in telefoneValuePessoa) {
+                objectTelefonePessoa.whatsapp = telefoneValuePessoa.whatsapp;
+              }
+              if ("operadora" in telefoneValuePessoa) {
+                objectTelefonePessoa.operadora = telefoneValuePessoa.operadora;
+              }
+
+              createNewPessoa.telefone.push(objectTelefonePessoa);
+            });
+            element.endereco?.map((enderecoValuePessoa) => {
+              const newObjectEnderecoPessoa = {} as Endereco;
+
+              newObjectEnderecoPessoa.area = enderecoValuePessoa.area;
+              newObjectEnderecoPessoa.bairro = enderecoValuePessoa.bairro;
+              newObjectEnderecoPessoa.city = enderecoValuePessoa.city;
+              newObjectEnderecoPessoa.cep_ou_zipcode =
+                enderecoValuePessoa["cep ou zipcode"];
+              newObjectEnderecoPessoa.numero = enderecoValuePessoa.numero;
+
+              if ("nome" in enderecoValuePessoa) {
+                newObjectEnderecoPessoa.nome = enderecoValuePessoa.nome;
+              }
+              if ("endereco" in enderecoValuePessoa) {
+                newObjectEnderecoPessoa.endereco = enderecoValuePessoa.endereco;
+              }
+              if ("complemento" in enderecoValuePessoa) {
+                newObjectEnderecoPessoa.complemento =
+                  enderecoValuePessoa.complemento;
+              }
+              if ("logradouro" in enderecoValuePessoa) {
+                newObjectEnderecoPessoa.logradouro =
+                  enderecoValuePessoa.logradouro;
+              }
+
+              createNewPessoa.endereco.push(newObjectEnderecoPessoa);
+            });
+            element.location?.map((enderecoValuePessoa) => {
+              const newObjectLocationPessoa = {} as Endereco;
+
+              newObjectLocationPessoa.area = enderecoValuePessoa.area;
+              newObjectLocationPessoa.bairro = enderecoValuePessoa.bairro;
+              newObjectLocationPessoa.city = enderecoValuePessoa.city;
+              newObjectLocationPessoa.area_code =
+                enderecoValuePessoa["area code"];
+              newObjectLocationPessoa.numero = enderecoValuePessoa.numero;
+
+              if ("logradouro" in enderecoValuePessoa) {
+                newObjectLocationPessoa.logradouro =
+                  enderecoValuePessoa.logradouro;
+              }
+
+              createNewPessoa.endereco.push(newObjectLocationPessoa);
+            });
+
+            createNewObjectMain.pessoa.push(createNewPessoa);
+          });
         });
 
         setMainEntity(() => [createNewObjectMain]);
@@ -83,10 +202,16 @@ function App() {
     getApiResult();
   }, []);
 
+  console.log(mainEntity);
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div>
-        <p>teste</p>
+        {loading ? (
+          <img src={loaderGif} alt="Carregando" title="Carregando" />
+        ) : (
+          <p>teste</p>
+        )}
       </div>
     </div>
   );
