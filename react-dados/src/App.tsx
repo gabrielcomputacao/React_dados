@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import loaderGif from "@/assets/loader.gif";
 import "./global.css";
 import { Empresa, Endereco, Pessoa, Snap, Telefone } from "./models/models";
+import { Header } from "./components/header";
+import { MainContainer } from "./components/mainContainer";
+import DataContext from "./context";
 
 function App() {
-  const [mainEntity, setMainEntity] = useState<Array<Snap>>([]);
+  const [mainEntity, setMainEntity] = useState<Snap>({} as Snap);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -194,23 +197,27 @@ function App() {
           });
         });
 
-        setMainEntity(() => [createNewObjectMain]);
+        setMainEntity(createNewObjectMain);
       } catch (error) {
         console.log(error);
       }
     }
     getApiResult();
+    setLoading(false);
   }, []);
 
-  console.log(mainEntity);
-
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="h-screen">
       <div>
         {loading ? (
           <img src={loaderGif} alt="Carregando" title="Carregando" />
         ) : (
-          <p>teste</p>
+          <>
+            <DataContext.Provider value={mainEntity}>
+              <Header />
+              <MainContainer />
+            </DataContext.Provider>
+          </>
         )}
       </div>
     </div>
