@@ -8,6 +8,7 @@ import DataContext from "./context";
 
 function App() {
   const [mainEntity, setMainEntity] = useState<Snap>({} as Snap);
+  const [mainPerson, setMainPerson] = useState<Pessoa>({} as Pessoa);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -193,6 +194,10 @@ function App() {
               createNewPessoa.endereco.push(newObjectLocationPessoa);
             });
 
+            if (element.bookmark === "true") {
+              setMainPerson(createNewPessoa);
+            }
+
             createNewObjectMain.pessoa.push(createNewPessoa);
           });
         });
@@ -213,7 +218,7 @@ function App() {
           <img src={loaderGif} alt="Carregando" title="Carregando" />
         ) : (
           <>
-            <DataContext.Provider value={mainEntity}>
+            <DataContext.Provider value={{ mainEntity, mainPerson }}>
               <Header />
               <MainContainer />
             </DataContext.Provider>
