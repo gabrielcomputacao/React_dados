@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import DataContext from "@/context";
 import { Label } from "@/components/ui/label";
 
@@ -11,13 +11,13 @@ export function Contatos() {
       <div>
         <div className="flex justify-center items-center flex-col gap-5 h-auto border p-5">
           <div className="text-center bg-[#ededed] py-1 px-4 rounded-md">
-            <h2 className="font-semibold text-lg">Telefones</h2>
+            <h2 className="font-semibold text-lg">Telefone</h2>
           </div>
           <div className="flex flex-col justify-center items-start gap-14">
             {mainEntity.telefone.map((tel, index) => (
               <div className="flex  gap-8 justify-start items-start border p-5 min-w-full">
                 <div className="grid w-full h-full  gap-1.5 self-start ">
-                  <Label htmlFor="email">Telefone</Label>
+                  <Label htmlFor="telefone">Telefone</Label>
                   <Input
                     value={tel.phone_number}
                     type="text"
@@ -56,7 +56,7 @@ export function Contatos() {
             ))}
           </div>
           <div className="text-center bg-[#ededed] py-1 px-4 rounded-md">
-            <h2 className="font-semibold text-lg">Emails</h2>
+            <h2 className="font-semibold text-lg">Email</h2>
           </div>
           <div className="flex flex-col justify-center items-start w-full">
             {mainEntity.email.map((emailValue, index) => (

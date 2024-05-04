@@ -7,6 +7,7 @@ import {
 } from "../ui/accordion";
 import DataContext from "@/context";
 import { Contatos } from "../dataContainer/contatos";
+import { Empresas } from "../dataContainer/empresas";
 
 export function MainContainer() {
   const { mainEntity, mainPerson } = useContext(DataContext);
@@ -40,8 +41,10 @@ export function MainContainer() {
           <div className="w-[800px] border px-5 rounded-md">
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
-                <AccordionTrigger> Empresas </AccordionTrigger>
-                <AccordionContent></AccordionContent>
+                <AccordionTrigger> Histórico de Empresas </AccordionTrigger>
+                <AccordionContent>
+                  <Empresas />
+                </AccordionContent>
               </AccordionItem>
             </Accordion>
           </div>
