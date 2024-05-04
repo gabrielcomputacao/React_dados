@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 import DataContext from "@/context";
+import { Contatos } from "../dataContainer/contatos";
 
 export function MainContainer() {
   const { mainEntity, mainPerson } = useContext(DataContext);
@@ -30,7 +31,9 @@ export function MainContainer() {
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger> Contatos </AccordionTrigger>
-                <AccordionContent></AccordionContent>
+                <AccordionContent>
+                  <Contatos />
+                </AccordionContent>
               </AccordionItem>
             </Accordion>
           </div>
