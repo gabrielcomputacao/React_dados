@@ -53,7 +53,7 @@ function App() {
                 objectEnderecoEmpresa.complemento = enderecoValue.complemento;
               }
               if ("area code" in enderecoValue) {
-                objectEnderecoEmpresa.complemento = enderecoValue["area code"];
+                objectEnderecoEmpresa.area_code = enderecoValue["area code"];
               }
               if ("numero" in enderecoValue) {
                 objectEnderecoEmpresa.numero = enderecoValue.numero;

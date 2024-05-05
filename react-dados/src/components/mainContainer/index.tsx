@@ -10,7 +10,7 @@ import { Contatos } from "../dataContainer/contatos";
 import { Empresas } from "../dataContainer/empresas";
 
 export function MainContainer() {
-  const { mainEntity, mainPerson } = useContext(DataContext);
+  const { mainPerson } = useContext(DataContext);
 
   return (
     <div className="h-screen w-screen p-5">
