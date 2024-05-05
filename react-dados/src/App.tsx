@@ -137,7 +137,7 @@ function App() {
             element.telefone?.map((telefoneValuePessoa) => {
               const objectTelefonePessoa = {} as Telefone;
 
-              objectTelefonePessoa.operadora =
+              objectTelefonePessoa.phone_number =
                 telefoneValuePessoa["phone number"];
 
               if ("whatsapp" in telefoneValuePessoa) {
@@ -212,17 +212,17 @@ function App() {
   }, []);
 
   return (
-    <div className="h-screen">
+    <div className="h-screen w-full">
       <div>
         {loading ? (
           <img src={loaderGif} alt="Carregando" title="Carregando" />
         ) : (
-          <>
+          <div className="pb-20">
             <DataContext.Provider value={{ mainEntity, mainPerson }}>
               <Header />
               <MainContainer />
             </DataContext.Provider>
-          </>
+          </div>
         )}
       </div>
     </div>

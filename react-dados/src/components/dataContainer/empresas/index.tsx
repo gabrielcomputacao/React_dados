@@ -17,6 +17,7 @@ import {
 import { Building2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import style from "./style.module.css";
 
 export function Empresas() {
   const { mainEntity } = useContext(DataContext);
@@ -24,10 +25,7 @@ export function Empresas() {
   return (
     <div>
       <div>
-        <div className="flex justify-center items-center flex-col gap-5 h-auto border p-5">
-          <div className="text-center bg-[#ededed] py-1 px-4 rounded-md">
-            <h2 className="font-semibold text-lg">Empresas</h2>
-          </div>
+        <div className="flex justify-center items-center flex-col gap-5 h-auto  p-5">
           <div className="flex justify-center items-center gap-10">
             {mainEntity.empresa.map((company, index) => (
               <div>
@@ -43,7 +41,7 @@ export function Empresas() {
                       <DialogTrigger className="border bg-azulClaroTech py-2 px-4 rounded-md font-semibold">
                         Ver dados
                       </DialogTrigger>
-                      <DialogContent className="w-[855px] max-w-full">
+                      <DialogContent className="w-[855px] max-w-full overflow-y-scroll max-h-screen sm:rounded-none">
                         <DialogHeader>
                           <DialogTitle className="mb-5">Empresa</DialogTitle>
                           <div className="flex justify-center flex-col gap-2">
