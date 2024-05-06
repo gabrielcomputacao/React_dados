@@ -70,6 +70,12 @@ export function Graphic() {
     return null;
   };
 
+  const error = console.error;
+  console.error = (...args: any) => {
+    if (/defaultProps/.test(args[0])) return;
+    error(...args);
+  };
+
   return (
     <div className="w-full mb-10">
       <Card>

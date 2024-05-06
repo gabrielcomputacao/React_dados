@@ -13,7 +13,10 @@ export function Contatos() {
         <div className="flex justify-center items-center flex-col gap-5 h-auto w-full">
           <div className="flex flex-col justify-center items-start w-full gap-8">
             {mainEntity.telefone.map((tel, index) => (
-              <div className="flex  gap-5 justify-start items-start border p-5 min-w-full flex-wrap lg:flex-nowrap">
+              <div
+                key={`${tel.phone_number}-${index}`}
+                className="flex  gap-5 justify-start items-start border p-5 min-w-full flex-wrap lg:flex-nowrap"
+              >
                 <div className="grid w-full h-full  gap-1.5 self-start ">
                   <Label htmlFor="telefone">Número</Label>
                   <Input
@@ -56,7 +59,10 @@ export function Contatos() {
 
           <div className="flex flex-col justify-center items-start w-full gap-8">
             {mainEntity.email.map((emailValue, index) => (
-              <div className={`flex justify-start items-start w-full px-1`}>
+              <div
+                key={`${emailValue.email_address}-${index}`}
+                className={`flex justify-start items-start w-full px-1`}
+              >
                 <div className=" min-w-full  gap-1.5 self-start ">
                   <Label htmlFor="email">Email</Label>
                   <Input

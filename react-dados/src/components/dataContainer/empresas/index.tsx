@@ -33,7 +33,7 @@ export function Empresas() {
         <div className="flex justify-center items-center flex-col gap-5 h-auto  p-5">
           <div className="flex justify-center items-center gap-10 flex-wrap lg:flex-nowrap">
             {mainEntity.empresa.map((company, index) => (
-              <div>
+              <div key={`${company.razao_social}-${index}`}>
                 <Card className="min-h-64 min-w-48 flex flex-col justify-around items-center ">
                   <CardHeader className="flex justify-center flex-col items-center">
                     <Building2 size={48} />
@@ -135,7 +135,10 @@ export function Empresas() {
                             </div>
                             <div className="w-full">
                               {company.endereco.map((compEnd, indexEnd) => (
-                                <div className="flex flex-col items-center justify-between gap-3 w-full ">
+                                <div
+                                  key={`${compEnd.area_code}-${indexEnd}`}
+                                  className="flex flex-col items-center justify-between gap-3 w-full "
+                                >
                                   <div className="flex justify-between  gap-4 w-full flex-wrap lg:flex-nowrap">
                                     <div className="grid w-full h-full  gap-1.5 self-start ">
                                       <Label
@@ -275,7 +278,10 @@ export function Empresas() {
                                 </div>
 
                                 {company.telefone.map((compTel, indexTel) => (
-                                  <div className="flex justify-start w-full gap-5">
+                                  <div
+                                    key={`${compTel.phone_number}-${indexTel}`}
+                                    className="flex justify-start w-full gap-5"
+                                  >
                                     <div className="grid w-full h-full  gap-1.5 ">
                                       <Label
                                         className="text-start"

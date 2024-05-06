@@ -31,7 +31,7 @@ export function Pessoas() {
       <div className="flex justify-center items-center flex-col gap-5 h-auto  p-5">
         <div className="flex justify-center items-center gap-10 flex-wrap">
           {mainEntity.pessoa.map((person, index) => (
-            <div>
+            <div key={`${person.first_name}-${index}`}>
               {person.bookmark !== "true" && (
                 <Card className="min-h-64 min-w-48 flex flex-col justify-around items-center ">
                   <CardHeader className="flex justify-center flex-col items-center">
@@ -180,7 +180,10 @@ export function Pessoas() {
                                 <div className="w-full">
                                   {person.endereco.map(
                                     (personEnd, indexEnd) => (
-                                      <div className="flex flex-col gap-3 w-full">
+                                      <div
+                                        key={`${personEnd.city}-${indexEnd}`}
+                                        className="flex flex-col gap-3 w-full"
+                                      >
                                         <div className="flex justify-between  gap-4 w-full flex-wrap lg:flex-nowrap">
                                           <div className="grid w-full h-full  gap-1.5 self-start ">
                                             <Label
@@ -327,7 +330,10 @@ export function Pessoas() {
 
                                     {person.telefone.map(
                                       (personTel, indexTel) => (
-                                        <div className="flex justify-start w-full gap-5 border p-3 flex-wrap lg:flex-nowrap">
+                                        <div
+                                          key={`${personTel.phone_number}-${indexTel}`}
+                                          className="flex justify-start w-full gap-5 border p-3 flex-wrap lg:flex-nowrap"
+                                        >
                                           <div className="grid lg:w-[40%] h-full  gap-1.5 ">
                                             <Label
                                               className="text-start"

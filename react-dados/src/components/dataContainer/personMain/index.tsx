@@ -216,7 +216,10 @@ export function PersonMain() {
             </div>
             <div className="w-full flex flex-col gap-5">
               {mainEntity.endereco.map((personMain, indexEnd) => (
-                <div className="flex flex-col gap-5 w-full border p-5">
+                <div
+                  key={`${personMain.area}-${indexEnd}`}
+                  className="flex flex-col gap-5 w-full border p-5"
+                >
                   <div className="flex justify-between  gap-4 w-full flex-wrap lg:flex-nowrap">
                     <div className="grid w-full h-full  gap-1.5 self-start ">
                       <Label htmlFor="bairro">Cidade</Label>
