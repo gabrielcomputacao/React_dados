@@ -62,3 +62,9 @@ export function acentuarPalavra(palavra: string) {
 
   return palavra;
 }
+
+export function capitalizeWords(str: string) {
+  return str.replace(/\b[a-z]/g, function (char: string) {
+    return char.toUpperCase();
+  });
+}
