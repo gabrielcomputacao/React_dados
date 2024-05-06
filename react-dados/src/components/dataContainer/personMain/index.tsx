@@ -10,7 +10,7 @@ export function PersonMain() {
   return (
     <div>
       <div className="flex flex-col gap-7 mt-5">
-        <div className="flex justify-between items-center gap-7">
+        <div className="flex justify-between items-center gap-7 flex-wrap lg:flex-nowrap">
           <div className="grid w-full h-full  gap-1.5 ">
             <Label htmlFor="nome">Nome Completo</Label>
             <Input
@@ -56,7 +56,7 @@ export function PersonMain() {
             />
           </div>
         </div>
-        <div className="flex justify-start items-center gap-7">
+        <div className="flex justify-start items-center gap-7 flex-wrap lg:flex-nowrap">
           <div className="grid w-full h-full  gap-1.5 ">
             <Label htmlFor="nome">Data de nascimento</Label>
             <Input
@@ -102,7 +102,7 @@ export function PersonMain() {
             />
           </div>
         </div>
-        <div className="flex justify-start items-center gap-7">
+        <div className="flex justify-start items-center gap-7 flex-wrap lg:flex-nowrap">
           <div className="grid w-full h-full  gap-1.5 ">
             <Label htmlFor="nome">Escolaridade</Label>
             <Input
@@ -138,7 +138,7 @@ export function PersonMain() {
             />
           </div>
         </div>
-        <div className="flex justify-start items-center gap-7">
+        <div className="flex justify-start items-center gap-7 flex-wrap lg:flex-nowrap">
           <div className="grid h-full  gap-1.5 ">
             <Label htmlFor="nome">País</Label>
             <Input
@@ -185,7 +185,7 @@ export function PersonMain() {
             />
           </div>
         </div>
-        <div className="flex justify-start items-center gap-7">
+        <div className="flex justify-start items-center gap-7 flex-wrap lg:flex-nowrap">
           <div className="grid w-full h-full  gap-1.5 ">
             <Label htmlFor="nome">Apelido</Label>
             <Input
@@ -217,7 +217,7 @@ export function PersonMain() {
             <div className="w-full flex flex-col gap-5">
               {mainEntity.endereco.map((personMain, indexEnd) => (
                 <div className="flex flex-col gap-5 w-full border p-5">
-                  <div className="flex justify-between  gap-4 w-full">
+                  <div className="flex justify-between  gap-4 w-full flex-wrap lg:flex-nowrap">
                     <div className="grid w-full h-full  gap-1.5 self-start ">
                       <Label htmlFor="bairro">Cidade</Label>
                       <Input
@@ -266,7 +266,7 @@ export function PersonMain() {
                     )}
                   </div>
 
-                  <div className="flex justify-start gap-4 w-full">
+                  <div className="flex justify-start gap-4 w-full flex-wrap lg:flex-nowrap">
                     <div className="grid w-full gap-1.5 self-start">
                       <Label htmlFor="complemento">Complemento</Label>
                       <Input

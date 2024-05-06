@@ -215,7 +215,9 @@ function App() {
     <div className="h-screen w-full">
       <div>
         {loading ? (
-          <img src={loaderGif} alt="Carregando" title="Carregando" />
+          <div className="w-screen h-screen flex justify-center items-center">
+            <img src={loaderGif} alt="Carregando" title="Carregando" />
+          </div>
         ) : (
           <div className="pb-20">
             <DataContext.Provider value={{ mainEntity, mainPerson }}>

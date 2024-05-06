@@ -17,7 +17,7 @@ import {
 import { Building2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import style from "./style.module.css";
+
 import {
   formatarCNPJ,
   formatarTelefone,
@@ -31,7 +31,7 @@ export function Empresas() {
     <div>
       <div>
         <div className="flex justify-center items-center flex-col gap-5 h-auto  p-5">
-          <div className="flex justify-center items-center gap-10">
+          <div className="flex justify-center items-center gap-10 flex-wrap lg:flex-nowrap">
             {mainEntity.empresa.map((company, index) => (
               <div>
                 <Card className="min-h-64 min-w-48 flex flex-col justify-around items-center ">
@@ -46,13 +46,15 @@ export function Empresas() {
                       <DialogTrigger className="border bg-azulClaroTech py-2 px-4 rounded-md font-semibold">
                         Ver dados
                       </DialogTrigger>
-                      <DialogContent className="w-[855px] max-h-[600px] max-w-full overflow-y-scroll sm:rounded-none">
+                      <DialogContent className="w-[90%] sm:min-w-[600px] lg:w-[855px] max-h-[600px] max-w-full overflow-y-scroll sm:rounded-none">
                         <DialogHeader>
                           <DialogTitle className="mb-5">Empresa</DialogTitle>
-                          <div className="flex justify-center flex-col gap-2">
-                            <div className="flex justify-center gap-5 items-center">
-                              <div className="grid w-full h-full  gap-1.5 self-start ">
-                                <Label htmlFor="razao">Razão Social</Label>
+                          <div className="flex justify-center flex-col gap-5">
+                            <div className="flex justify-center gap-5 items-center flex-wrap lg:flex-nowrap">
+                              <div className="grid w-full lg:h-full  gap-1.5 self-start ">
+                                <Label className="text-start" htmlFor="razao">
+                                  Razão Social
+                                </Label>
                                 <Input
                                   value={company.razao_social}
                                   type="text"
@@ -62,8 +64,10 @@ export function Empresas() {
                                   className="focus-visible:ring-0"
                                 />
                               </div>
-                              <div className="grid w-2/6 h-full  gap-1.5 self-start ">
-                                <Label htmlFor="cnpj">CNPJ</Label>
+                              <div className="grid w-full lg:w-2/6 lg:h-full  gap-1.5 self-start ">
+                                <Label className="text-start" htmlFor="cnpj">
+                                  CNPJ
+                                </Label>
                                 <Input
                                   value={formatarCNPJ(company.cnpj)}
                                   type="text"
@@ -74,9 +78,11 @@ export function Empresas() {
                                 />
                               </div>
                             </div>
-                            <div className="flex justify-start gap-5 items-center">
-                              <div className="grid w-full h-full max-w-60  gap-1.5 self-start ">
-                                <Label htmlFor="Vínculo">Vínculo</Label>
+                            <div className="flex justify-start gap-5 lg:items-center flex-wrap lg:flex-nowrap">
+                              <div className="grid w-full lg:h-full  lg:max-w-60  gap-1.5 ">
+                                <Label className="text-start" htmlFor="Vínculo">
+                                  Vínculo
+                                </Label>
                                 <Input
                                   value={company.vinculo}
                                   type="text"
@@ -87,8 +93,13 @@ export function Empresas() {
                                 />
                               </div>
                               {company.admissao && (
-                                <div className="grid w-full h-full  gap-1.5 self-start ">
-                                  <Label htmlFor="Admissão">Admissão</Label>
+                                <div className="grid w-full lg:h-full  gap-1.5 self-start ">
+                                  <Label
+                                    className="text-start"
+                                    htmlFor="Admissão"
+                                  >
+                                    Admissão
+                                  </Label>
                                   <Input
                                     value={company.admissao}
                                     type="text"
@@ -100,8 +111,10 @@ export function Empresas() {
                                 </div>
                               )}
                               {company.renda && (
-                                <div className="grid w-full h-full  gap-1.5 self-start ">
-                                  <Label htmlFor="renda">Renda</Label>
+                                <div className="grid w-full lg:h-full  gap-1.5 self-start ">
+                                  <Label className="text-start" htmlFor="renda">
+                                    Renda
+                                  </Label>
                                   <Input
                                     value={`R$${company.renda}`}
                                     type="text"
@@ -115,17 +128,22 @@ export function Empresas() {
                             </div>
                           </div>
                           <div className="flex justify-center flex-col items-center">
-                            <div className="text-center bg-[#ededed] py-1 px-4 rounded-md w-2/6 my-5">
+                            <div className="text-center bg-[#ededed] py-1 px-4 rounded-md w-auto lg:w-2/6 my-5">
                               <h2 className="font-semibold text-lg">
                                 Endereço
                               </h2>
                             </div>
                             <div className="w-full">
                               {company.endereco.map((compEnd, indexEnd) => (
-                                <div className="flex flex-col items-center justify-between gap-3 w-full">
-                                  <div className="flex justify-between  gap-4 w-full">
+                                <div className="flex flex-col items-center justify-between gap-3 w-full ">
+                                  <div className="flex justify-between  gap-4 w-full flex-wrap lg:flex-nowrap">
                                     <div className="grid w-full h-full  gap-1.5 self-start ">
-                                      <Label htmlFor="bairro">Cidade</Label>
+                                      <Label
+                                        className="text-start"
+                                        htmlFor="bairro"
+                                      >
+                                        Cidade
+                                      </Label>
                                       <Input
                                         value={compEnd.city}
                                         type="text"
@@ -136,7 +154,12 @@ export function Empresas() {
                                       />
                                     </div>
                                     <div className="grid w-full h-full  gap-1.5 self-start ">
-                                      <Label htmlFor="bairro">Bairro</Label>
+                                      <Label
+                                        className="text-start"
+                                        htmlFor="bairro"
+                                      >
+                                        Bairro
+                                      </Label>
                                       <Input
                                         value={compEnd.bairro}
                                         type="text"
@@ -147,7 +170,12 @@ export function Empresas() {
                                       />
                                     </div>
                                     <div className="grid w-full h-full  gap-1.5 self-start ">
-                                      <Label htmlFor="rua">Rua</Label>
+                                      <Label
+                                        className="text-start"
+                                        htmlFor="rua"
+                                      >
+                                        Rua
+                                      </Label>
                                       <Input
                                         value={compEnd.endereco}
                                         type="text"
@@ -159,7 +187,12 @@ export function Empresas() {
                                     </div>
                                     {compEnd.numero && (
                                       <div className="grid    gap-1.5  ">
-                                        <Label htmlFor="numero">Número</Label>
+                                        <Label
+                                          className="text-start"
+                                          htmlFor="numero"
+                                        >
+                                          Número
+                                        </Label>
                                         <Input
                                           value={compEnd.numero}
                                           type="text"
@@ -172,10 +205,13 @@ export function Empresas() {
                                     )}
                                   </div>
 
-                                  <div className="flex justify-start gap-4 w-full">
+                                  <div className="flex justify-start gap-4 w-full flex-wrap lg:flex-nowrap">
                                     {compEnd.complemento && (
                                       <div className="grid w-full gap-1.5 self-start">
-                                        <Label htmlFor="complemento">
+                                        <Label
+                                          className="text-start"
+                                          htmlFor="complemento"
+                                        >
                                           Complemento
                                         </Label>
                                         <Input
@@ -189,7 +225,12 @@ export function Empresas() {
                                       </div>
                                     )}
                                     <div className="grid   gap-1.5 ">
-                                      <Label htmlFor="uf">UF</Label>
+                                      <Label
+                                        className="text-start"
+                                        htmlFor="uf"
+                                      >
+                                        UF
+                                      </Label>
                                       <Input
                                         value={compEnd.area}
                                         type="text"
@@ -200,7 +241,12 @@ export function Empresas() {
                                       />
                                     </div>
                                     <div className="grid w-full max-w-60  gap-1.5 ">
-                                      <Label htmlFor="cep">CEP</Label>
+                                      <Label
+                                        className="text-start"
+                                        htmlFor="cep"
+                                      >
+                                        CEP
+                                      </Label>
                                       <Input
                                         value={
                                           compEnd.area_code
@@ -231,7 +277,10 @@ export function Empresas() {
                                 {company.telefone.map((compTel, indexTel) => (
                                   <div className="flex justify-start w-full gap-5">
                                     <div className="grid w-full h-full  gap-1.5 ">
-                                      <Label htmlFor="phone_numberTel">
+                                      <Label
+                                        className="text-start"
+                                        htmlFor="phone_numberTel"
+                                      >
                                         Número
                                       </Label>
                                       <Input
@@ -246,7 +295,12 @@ export function Empresas() {
                                       />
                                     </div>
                                     <div className="grid  h-full  gap-1.5 ">
-                                      <Label htmlFor="whatsapp">Whatsapp</Label>
+                                      <Label
+                                        className="text-start"
+                                        htmlFor="whatsapp"
+                                      >
+                                        Whatsapp
+                                      </Label>
                                       <Input
                                         value={formatterNao(compTel.whatsapp)}
                                         type="text"
@@ -257,7 +311,10 @@ export function Empresas() {
                                       />
                                     </div>
                                     <div className="grid w-full h-full  gap-1.5 ">
-                                      <Label htmlFor="operadora">
+                                      <Label
+                                        className="text-start"
+                                        htmlFor="operadora"
+                                      >
                                         Operadora
                                       </Label>
                                       <Input

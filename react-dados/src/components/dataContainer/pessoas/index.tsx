@@ -51,13 +51,15 @@ export function Pessoas() {
                       <DialogTrigger className="border bg-azulClaroTech py-2 px-4 rounded-md font-semibold">
                         Ver dados
                       </DialogTrigger>
-                      <DialogContent className="w-[855px] max-h-[600px] max-w-full overflow-y-scroll  sm:rounded-none mt-1">
+                      <DialogContent className="w-[90%] sm:min-w-[600px] lg:w-[855px] max-h-[600px] max-w-full overflow-y-scroll  sm:rounded-none mt-1">
                         <DialogHeader>
                           <DialogTitle className="mb-5">Pessoa</DialogTitle>
                           <div className="flex flex-col items-center gap-5">
-                            <div className="flex justify-start gap-5 items-center w-full">
-                              <div className="grid w-full h-full  gap-1.5 ">
-                                <Label htmlFor="name">Nome Completo</Label>
+                            <div className="flex justify-start gap-5 items-center w-full flex-wrap lg:flex-nowrap">
+                              <div className="grid w-full lg:h-full  gap-1.5 ">
+                                <Label className="text-start" htmlFor="name">
+                                  Nome Completo
+                                </Label>
                                 <Input
                                   value={person.full_name ?? ""}
                                   type="text"
@@ -67,8 +69,10 @@ export function Pessoas() {
                                   className="focus-visible:ring-0"
                                 />
                               </div>
-                              <div className="grid w-full max-w-40 h-full  gap-1.5  ">
-                                <Label htmlFor="cpf">CPF</Label>
+                              <div className="grid w-full lg:max-w-40 lg:h-full  gap-1.5  ">
+                                <Label className="text-start" htmlFor="cpf">
+                                  CPF
+                                </Label>
                                 <Input
                                   value={formatarCPF(person.cpf ?? "") ?? ""}
                                   type="text"
@@ -78,8 +82,11 @@ export function Pessoas() {
                                   className="focus-visible:ring-0 "
                                 />
                               </div>
-                              <div className="grid w-full max-w-40 h-full  gap-1.5  self-start">
-                                <Label htmlFor="nascimento">
+                              <div className="grid w-full max-w-40 lg:h-full  gap-1.5  self-start">
+                                <Label
+                                  className="text-start"
+                                  htmlFor="nascimento"
+                                >
                                   Data de Nascimento
                                 </Label>
                                 <Input
@@ -91,8 +98,13 @@ export function Pessoas() {
                                   className="focus-visible:ring-0 "
                                 />
                               </div>
-                              <div className="grid w-auto h-full  gap-1.5  ">
-                                <Label htmlFor="nascimento">Sexo</Label>
+                              <div className="grid w-auto lg:h-full  gap-1.5  ">
+                                <Label
+                                  className="text-start"
+                                  htmlFor="nascimento"
+                                >
+                                  Sexo
+                                </Label>
                                 <Input
                                   value={person.sexo ?? ""}
                                   type="text"
@@ -103,9 +115,11 @@ export function Pessoas() {
                                 />
                               </div>
                             </div>
-                            <div className="flex justify-start gap-5 items-center w-full">
-                              <div className="grid w-full h-full  gap-1.5  ">
-                                <Label htmlFor="vinculo">Vínculo</Label>
+                            <div className="flex justify-start gap-5 items-center w-full flex-wrap lg:flex-nowrap">
+                              <div className="grid w-full lg:h-full  gap-1.5  ">
+                                <Label className="text-start" htmlFor="vinculo">
+                                  Vínculo
+                                </Label>
                                 <Input
                                   value={person.vinculo ?? ""}
                                   type="text"
@@ -115,8 +129,10 @@ export function Pessoas() {
                                   className="focus-visible:ring-0 "
                                 />
                               </div>
-                              <div className="grid w-full h-full  gap-1.5  ">
-                                <Label htmlFor="surname">Apelido</Label>
+                              <div className="grid w-full lg:h-full  gap-1.5  ">
+                                <Label className="text-start" htmlFor="surname">
+                                  Apelido
+                                </Label>
                                 <Input
                                   value={person.surname ?? ""}
                                   type="text"
@@ -126,8 +142,10 @@ export function Pessoas() {
                                   className="focus-visible:ring-0 "
                                 />
                               </div>
-                              <div className="grid w-full h-full  gap-1.5  ">
-                                <Label htmlFor="procon">Procon</Label>
+                              <div className="grid w-full lg:h-full  gap-1.5  ">
+                                <Label className="text-start" htmlFor="procon">
+                                  Procon
+                                </Label>
                                 <Input
                                   value={person.procon ?? ""}
                                   type="text"
@@ -138,8 +156,8 @@ export function Pessoas() {
                                 />
                               </div>
 
-                              <div className="grid w-full h-full  gap-1.5  ">
-                                <Label htmlFor="titulo">
+                              <div className="grid w-full lg:h-full  gap-1.5  ">
+                                <Label className="text-start" htmlFor="titulo">
                                   Título de eleitor
                                 </Label>
                                 <Input
@@ -154,7 +172,7 @@ export function Pessoas() {
                             </div>
                             {person.endereco.length > 0 && (
                               <div className="flex  flex-col items-center w-full">
-                                <div className="text-center bg-[#ededed] py-1 px-4 rounded-md  my-5 w-2/6">
+                                <div className="text-center bg-[#ededed] py-1 px-4 rounded-md  my-5 lg:w-2/6">
                                   <h2 className="font-semibold text-lg ">
                                     Endereço
                                   </h2>
@@ -163,9 +181,12 @@ export function Pessoas() {
                                   {person.endereco.map(
                                     (personEnd, indexEnd) => (
                                       <div className="flex flex-col gap-3 w-full">
-                                        <div className="flex justify-between  gap-4 w-full">
+                                        <div className="flex justify-between  gap-4 w-full flex-wrap lg:flex-nowrap">
                                           <div className="grid w-full h-full  gap-1.5 self-start ">
-                                            <Label htmlFor="bairro">
+                                            <Label
+                                              className="text-start"
+                                              htmlFor="bairro"
+                                            >
                                               Cidade
                                             </Label>
                                             <Input
@@ -178,7 +199,10 @@ export function Pessoas() {
                                             />
                                           </div>
                                           <div className="grid w-full h-full  gap-1.5 self-start ">
-                                            <Label htmlFor="bairro">
+                                            <Label
+                                              className="text-start"
+                                              htmlFor="bairro"
+                                            >
                                               Bairro
                                             </Label>
                                             <Input
@@ -191,7 +215,12 @@ export function Pessoas() {
                                             />
                                           </div>
                                           <div className="grid w-full h-full  gap-1.5 self-start ">
-                                            <Label htmlFor="rua">Rua</Label>
+                                            <Label
+                                              className="text-start"
+                                              htmlFor="rua"
+                                            >
+                                              Rua
+                                            </Label>
                                             <Input
                                               value={
                                                 personEnd.endereco ??
@@ -206,7 +235,10 @@ export function Pessoas() {
                                           </div>
                                           {personEnd.numero && (
                                             <div className="grid    gap-1.5  ">
-                                              <Label htmlFor="numero">
+                                              <Label
+                                                className="text-start"
+                                                htmlFor="numero"
+                                              >
                                                 Número
                                               </Label>
                                               <Input
@@ -224,7 +256,10 @@ export function Pessoas() {
                                         <div className="flex justify-start gap-4 w-full">
                                           {personEnd.complemento && (
                                             <div className="grid w-full gap-1.5 self-start">
-                                              <Label htmlFor="complemento">
+                                              <Label
+                                                className="text-start"
+                                                htmlFor="complemento"
+                                              >
                                                 Complemento
                                               </Label>
                                               <Input
@@ -238,7 +273,12 @@ export function Pessoas() {
                                             </div>
                                           )}
                                           <div className="grid   gap-1.5 ">
-                                            <Label htmlFor="uf">UF</Label>
+                                            <Label
+                                              className="text-start"
+                                              htmlFor="uf"
+                                            >
+                                              UF
+                                            </Label>
                                             <Input
                                               value={personEnd.area}
                                               type="text"
@@ -249,7 +289,12 @@ export function Pessoas() {
                                             />
                                           </div>
                                           <div className="grid w-full max-w-60  gap-1.5 ">
-                                            <Label htmlFor="cep">CEP</Label>
+                                            <Label
+                                              className="text-start"
+                                              htmlFor="cep"
+                                            >
+                                              CEP
+                                            </Label>
                                             <Input
                                               value={
                                                 personEnd.area_code
@@ -274,7 +319,7 @@ export function Pessoas() {
                               <div className="w-full">
                                 {person.telefone.length > 0 && (
                                   <div className="flex justify-center flex-col items-center gap-5 w-full">
-                                    <div className="text-center bg-[#ededed] py-1 px-4 rounded-md w-2/6 my-5">
+                                    <div className="text-center bg-[#ededed] py-1 px-4 rounded-md lg:w-2/6 my-5">
                                       <h2 className="font-semibold text-lg">
                                         Telefone
                                       </h2>
@@ -282,9 +327,12 @@ export function Pessoas() {
 
                                     {person.telefone.map(
                                       (personTel, indexTel) => (
-                                        <div className="flex justify-start w-full gap-5">
-                                          <div className="grid w-[40%] h-full  gap-1.5 ">
-                                            <Label htmlFor="phone_numberTel">
+                                        <div className="flex justify-start w-full gap-5 border p-3 flex-wrap lg:flex-nowrap">
+                                          <div className="grid lg:w-[40%] h-full  gap-1.5 ">
+                                            <Label
+                                              className="text-start"
+                                              htmlFor="phone_numberTel"
+                                            >
                                               Número
                                             </Label>
                                             <Input
@@ -299,7 +347,10 @@ export function Pessoas() {
                                             />
                                           </div>
                                           <div className="grid  h-full  gap-1.5 ">
-                                            <Label htmlFor="whatsapp">
+                                            <Label
+                                              className="text-start"
+                                              htmlFor="whatsapp"
+                                            >
                                               Whatsapp
                                             </Label>
                                             <Input
@@ -314,7 +365,10 @@ export function Pessoas() {
                                             />
                                           </div>
                                           <div className="grid h-full  gap-1.5 ">
-                                            <Label htmlFor="operadora">
+                                            <Label
+                                              className="text-start"
+                                              htmlFor="operadora"
+                                            >
                                               Operadora
                                             </Label>
                                             <Input

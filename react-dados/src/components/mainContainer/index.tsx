@@ -16,13 +16,15 @@ export function MainContainer() {
 
   return (
     <div className="h-screen  p-5">
-      <div className="flex items-end gap-2 pl-5 mb-8">
+      <div className="flex items-end justify-center flex-wrap lg:flex-nowrap lg:justify-start gap-2 lg:pl-5 mb-8 w-full">
         <span className="text-md font-medium ">Dados:</span>
-        <h1 className="font-medium text-2xl">{mainPerson.full_name}</h1>
+        <h1 className="font-medium text-xl sm:text-2xl">
+          {mainPerson.full_name}
+        </h1>
       </div>
       <div className="flex justify-center items-center flex-col">
-        <div className="flex flex-col gap-5">
-          <div className="w-[800px] border px-5 rounded-md">
+        <div className="flex flex-col gap-5 w-full justify-center items-center">
+          <div className="w-[90%] lg:w-[900px] border px-5 rounded-md">
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger> Dados Pessoais </AccordionTrigger>
@@ -32,7 +34,7 @@ export function MainContainer() {
               </AccordionItem>
             </Accordion>
           </div>
-          <div className="w-[800px] border px-5 rounded-md">
+          <div className="w-[90%] lg:w-[900px] border px-5 rounded-md">
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger> Contatos </AccordionTrigger>
@@ -42,7 +44,7 @@ export function MainContainer() {
               </AccordionItem>
             </Accordion>
           </div>
-          <div className="w-[800px] border px-5 rounded-md">
+          <div className="w-[90%] lg:w-[900px] border px-5 rounded-md">
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger> Histórico de Empresas </AccordionTrigger>
@@ -52,7 +54,7 @@ export function MainContainer() {
               </AccordionItem>
             </Accordion>
           </div>
-          <div className="w-[800px] border px-5 rounded-md mb-5">
+          <div className="w-[90%] lg:w-[900px] border px-5 rounded-md mb-5">
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger>

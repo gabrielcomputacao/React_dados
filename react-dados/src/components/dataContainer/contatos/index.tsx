@@ -13,7 +13,7 @@ export function Contatos() {
         <div className="flex justify-center items-center flex-col gap-5 h-auto w-full">
           <div className="flex flex-col justify-center items-start w-full gap-8">
             {mainEntity.telefone.map((tel, index) => (
-              <div className="flex  gap-5 justify-start items-start border p-5 min-w-full">
+              <div className="flex  gap-5 justify-start items-start border p-5 min-w-full flex-wrap lg:flex-nowrap">
                 <div className="grid w-full h-full  gap-1.5 self-start ">
                   <Label htmlFor="telefone">Número</Label>
                   <Input
