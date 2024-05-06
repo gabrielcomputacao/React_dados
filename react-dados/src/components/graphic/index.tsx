@@ -71,7 +71,7 @@ export function Graphic() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full mb-10">
       <Card>
         <CardHeader className="flex-row items-center justify-between pb-8">
           <div className="space-y-1">
