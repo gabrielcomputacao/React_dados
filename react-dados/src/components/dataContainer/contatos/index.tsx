@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input";
 import { useContext } from "react";
 import DataContext from "@/context";
 import { Label } from "@/components/ui/label";
+import { formatarTelefone, formatterNao } from "@/utils/functions";
 
 export function Contatos() {
   const { mainEntity } = useContext(DataContext);
@@ -14,9 +15,9 @@ export function Contatos() {
             {mainEntity.telefone.map((tel, index) => (
               <div className="flex  gap-5 justify-start items-start border p-5 min-w-full">
                 <div className="grid w-full h-full  gap-1.5 self-start ">
-                  <Label htmlFor="telefone">Telefone</Label>
+                  <Label htmlFor="telefone">Número</Label>
                   <Input
-                    value={tel.phone_number}
+                    value={formatarTelefone(tel.phone_number)}
                     type="text"
                     id={`phone_number-${index}`}
                     placeholder=""
@@ -27,7 +28,7 @@ export function Contatos() {
                 <div className="grid w-full max-w-sm items-center gap-1.5">
                   <Label htmlFor="Whatsapp">Whatsapp</Label>
                   <Input
-                    value={tel.whatsapp}
+                    value={formatterNao(tel.whatsapp)}
                     type="text"
                     id={`whatsapp-${index}`}
                     placeholder=""

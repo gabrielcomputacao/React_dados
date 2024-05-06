@@ -2,9 +2,10 @@ import { Input } from "@/components/ui/input";
 import DataContext from "@/context";
 import { useContext } from "react";
 import { Label } from "@/components/ui/label";
+import { formatarCPF } from "@/utils/functions";
 
 export function PersonMain() {
-  const { mainPerson } = useContext(DataContext);
+  const { mainEntity, mainPerson } = useContext(DataContext);
 
   return (
     <div>
@@ -24,7 +25,7 @@ export function PersonMain() {
           <div className="grid w-full h-full  gap-1.5 ">
             <Label htmlFor="nome">CPF</Label>
             <Input
-              value={mainPerson.cpf}
+              value={formatarCPF(mainPerson.cpf ?? "")}
               type="text"
               id={`cpf-${mainPerson.cpf}`}
               placeholder=""
@@ -162,7 +163,7 @@ export function PersonMain() {
           </div>
 
           <div className="grid h-full  gap-1.5 ">
-            <Label htmlFor="nome">Estado</Label>
+            <Label htmlFor="nome">UF</Label>
             <Input
               value={mainPerson.estado_nascimento}
               type="text"
@@ -208,6 +209,119 @@ export function PersonMain() {
             />
           </div>
         </div>
+        {mainEntity.endereco.length > 0 && (
+          <div className="flex  flex-col items-center w-full">
+            <div className="text-center bg-[#ededed] py-1 px-4 rounded-md  my-5 w-2/6">
+              <h2 className="font-semibold text-lg ">Endereço</h2>
+            </div>
+            <div className="w-full flex flex-col gap-5">
+              {mainEntity.endereco.map((personMain, indexEnd) => (
+                <div className="flex flex-col gap-5 w-full border p-5">
+                  <div className="flex justify-between  gap-4 w-full">
+                    <div className="grid w-full h-full  gap-1.5 self-start ">
+                      <Label htmlFor="bairro">Cidade</Label>
+                      <Input
+                        value={personMain.city}
+                        type="text"
+                        id={`cidade-${indexEnd}`}
+                        placeholder=""
+                        readOnly
+                        className="focus-visible:ring-0"
+                      />
+                    </div>
+                    <div className="grid w-full h-full  gap-1.5 self-start ">
+                      <Label htmlFor="bairro">Bairro</Label>
+                      <Input
+                        value={personMain.bairro}
+                        type="text"
+                        id={`bairro-${indexEnd}`}
+                        placeholder=""
+                        readOnly
+                        className="focus-visible:ring-0"
+                      />
+                    </div>
+                    <div className="grid w-full h-full  gap-1.5 self-start ">
+                      <Label htmlFor="rua">Rua</Label>
+                      <Input
+                        value={personMain.endereco ?? personMain.logradouro}
+                        type="text"
+                        id={`rua-${indexEnd}`}
+                        placeholder=""
+                        readOnly
+                        className="focus-visible:ring-0"
+                      />
+                    </div>
+                    {personMain.numero && (
+                      <div className="grid    gap-1.5  ">
+                        <Label htmlFor="numero">Número</Label>
+                        <Input
+                          value={personMain.numero}
+                          type="text"
+                          id={`numero-${indexEnd}`}
+                          placeholder=""
+                          readOnly
+                          className="focus-visible:ring-0 w-20"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="flex justify-start gap-4 w-full">
+                    <div className="grid w-full gap-1.5 self-start">
+                      <Label htmlFor="complemento">Complemento</Label>
+                      <Input
+                        value={personMain.complemento}
+                        type="text"
+                        id={`complemento-${indexEnd}`}
+                        placeholder=""
+                        readOnly
+                        className="focus-visible:ring-0"
+                      />
+                    </div>
+
+                    <div className="grid   gap-1.5 ">
+                      <Label htmlFor="uf">UF</Label>
+                      <Input
+                        value={personMain.area}
+                        type="text"
+                        id={`uf-${indexEnd}`}
+                        placeholder=""
+                        readOnly
+                        className="focus-visible:ring-0 w-20"
+                      />
+                    </div>
+                    <div className="grid w-full max-w-60  gap-1.5 ">
+                      <Label htmlFor="cep">CEP</Label>
+                      <Input
+                        value={
+                          personMain.area_code
+                            ? personMain.area_code
+                            : personMain.cep_ou_zipcode
+                        }
+                        type="text"
+                        id={`cep-${indexEnd}`}
+                        placeholder=""
+                        readOnly
+                        className="focus-visible:ring-0"
+                      />
+                    </div>
+                    <div className="grid w-full max-w-60  gap-1.5 ">
+                      <Label htmlFor="cep">Telefone relacionado</Label>
+                      <Input
+                        value={personMain.telefone_relacionado}
+                        type="text"
+                        id={`cep-${indexEnd}`}
+                        placeholder=""
+                        readOnly
+                        className="focus-visible:ring-0"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

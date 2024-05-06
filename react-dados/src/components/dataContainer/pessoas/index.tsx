@@ -14,6 +14,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import DataContext from "@/context";
+import {
+  acentuarPalavra,
+  formatarCPF,
+  formatarTelefone,
+  formatterNao,
+} from "@/utils/functions";
 import { User } from "lucide-react";
 import { useContext } from "react";
 
@@ -35,7 +41,9 @@ export function Pessoas() {
                         {person.first_name}
                       </span>
 
-                      <span className=" text-sm">{person.vinculo}</span>
+                      <span className=" text-sm">
+                        {acentuarPalavra(String(person.vinculo))}
+                      </span>
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex justify-center">
@@ -62,7 +70,7 @@ export function Pessoas() {
                               <div className="grid w-full max-w-40 h-full  gap-1.5  ">
                                 <Label htmlFor="cpf">CPF</Label>
                                 <Input
-                                  value={person.cpf ?? ""}
+                                  value={formatarCPF(person.cpf ?? "") ?? ""}
                                   type="text"
                                   id={`cpf-${index}`}
                                   placeholder=""
@@ -185,7 +193,10 @@ export function Pessoas() {
                                           <div className="grid w-full h-full  gap-1.5 self-start ">
                                             <Label htmlFor="rua">Rua</Label>
                                             <Input
-                                              value={personEnd.endereco}
+                                              value={
+                                                personEnd.endereco ??
+                                                personEnd.logradouro
+                                              }
                                               type="text"
                                               id={`rua-${indexEnd}`}
                                               placeholder=""
@@ -277,7 +288,9 @@ export function Pessoas() {
                                               Número
                                             </Label>
                                             <Input
-                                              value={personTel.phone_number}
+                                              value={formatarTelefone(
+                                                personTel.phone_number
+                                              )}
                                               type="text"
                                               id={`personTelphone_number-${indexTel}`}
                                               placeholder=""
@@ -290,7 +303,9 @@ export function Pessoas() {
                                               Whatsapp
                                             </Label>
                                             <Input
-                                              value={personTel.whatsapp}
+                                              value={formatterNao(
+                                                personTel.whatsapp
+                                              )}
                                               type="text"
                                               id={`personTelwhatsapp-${indexTel}`}
                                               placeholder=""

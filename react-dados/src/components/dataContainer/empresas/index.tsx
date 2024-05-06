@@ -18,6 +18,11 @@ import { Building2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import style from "./style.module.css";
+import {
+  formatarCNPJ,
+  formatarTelefone,
+  formatterNao,
+} from "@/utils/functions";
 
 export function Empresas() {
   const { mainEntity } = useContext(DataContext);
@@ -41,7 +46,7 @@ export function Empresas() {
                       <DialogTrigger className="border bg-azulClaroTech py-2 px-4 rounded-md font-semibold">
                         Ver dados
                       </DialogTrigger>
-                      <DialogContent className="w-[855px] max-w-full overflow-y-scroll max-h-screen sm:rounded-none">
+                      <DialogContent className="w-[855px] max-h-[600px] max-w-full overflow-y-scroll sm:rounded-none">
                         <DialogHeader>
                           <DialogTitle className="mb-5">Empresa</DialogTitle>
                           <div className="flex justify-center flex-col gap-2">
@@ -60,7 +65,7 @@ export function Empresas() {
                               <div className="grid w-2/6 h-full  gap-1.5 self-start ">
                                 <Label htmlFor="cnpj">CNPJ</Label>
                                 <Input
-                                  value={company.cnpj}
+                                  value={formatarCNPJ(company.cnpj)}
                                   type="text"
                                   id={`cnpj-${index}`}
                                   placeholder=""
@@ -96,7 +101,7 @@ export function Empresas() {
                               )}
                               {company.renda && (
                                 <div className="grid w-full h-full  gap-1.5 self-start ">
-                                  <Label htmlFor="telefone">Renda</Label>
+                                  <Label htmlFor="renda">Renda</Label>
                                   <Input
                                     value={`R$${company.renda}`}
                                     type="text"
@@ -110,7 +115,7 @@ export function Empresas() {
                             </div>
                           </div>
                           <div className="flex justify-center flex-col items-center">
-                            <div className="text-center bg-[#ededed] py-1 px-4 rounded-md w-2/6 my-3">
+                            <div className="text-center bg-[#ededed] py-1 px-4 rounded-md w-2/6 my-5">
                               <h2 className="font-semibold text-lg">
                                 Endereço
                               </h2>
@@ -217,7 +222,7 @@ export function Empresas() {
                           <div>
                             {company.telefone.length > 0 && (
                               <div className="flex justify-center flex-col items-center gap-2">
-                                <div className="text-center bg-[#ededed] py-1 px-4 rounded-md w-2/6 my-2">
+                                <div className="text-center bg-[#ededed] py-1 px-4 rounded-md w-2/6 my-5">
                                   <h2 className="font-semibold text-lg">
                                     Telefone
                                   </h2>
@@ -230,7 +235,9 @@ export function Empresas() {
                                         Número
                                       </Label>
                                       <Input
-                                        value={compTel.phone_number}
+                                        value={formatarTelefone(
+                                          compTel.phone_number
+                                        )}
                                         type="text"
                                         id={`phone_numberTel-${indexTel}`}
                                         placeholder=""
@@ -241,7 +248,7 @@ export function Empresas() {
                                     <div className="grid  h-full  gap-1.5 ">
                                       <Label htmlFor="whatsapp">Whatsapp</Label>
                                       <Input
-                                        value={compTel.whatsapp}
+                                        value={formatterNao(compTel.whatsapp)}
                                         type="text"
                                         id={`whatsapp-${indexTel}`}
                                         placeholder=""
